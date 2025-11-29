@@ -1,13 +1,16 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { Project, Platform, ProjectType } from '@/types';
 import { formatCurrency, calculateNetAmount } from '@/lib/utils';
 import { PLATFORM_LABELS, TYPE_LABELS } from '@/types';
 import { useProjectStore } from '@/store/useProjectStore';
-import { TrashIcon, InfoIcon, EditIcon, CheckIcon, XIcon } from './Icons';
+import { TrashIcon, InfoIcon, EditIcon, CheckIcon, XIcon, DragHandleIcon } from './Icons';
 import TaskRow from './TaskRow';
 import AddTaskRow from './AddTaskRow';
+import SortableTaskList from './SortableTaskList';
 
 interface ProjectTableRowProps {
   project: Project;
@@ -25,6 +28,16 @@ export default function ProjectTableRow({ project, isNew = false }: ProjectTable
     type: project.type,
   });
   const nameInputRef = useRef<HTMLInputElement>(null);
+
+  // ドラッグアンドドロップ設定
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: project.id });
 
   // タスクの合計金額を計算（手数料差し引き後）
   const totalAmount = project.tasks.reduce((sum, task) => {
@@ -92,11 +105,22 @@ export default function ProjectTableRow({ project, isNew = false }: ProjectTable
     }
   };
 
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
   // 編集モード
   if (isEditing) {
     return (
-      <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-l-4 border-blue-500">
-        <td className="px-8 py-6" style={{ minWidth: '350px' }}>
+      <tr ref={setNodeRef} style={style} className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-l-4 border-blue-500">
+        <td className="px-4 py-6" style={{ width: '50px' }}>
+          {/* ドラッグハンドル（編集中は非アクティブ） */}
+          <div className="text-slate-300 dark:text-slate-600">
+            <DragHandleIcon className="w-5 h-5" />
+          </div>
+        </td>
+        <td className="px-6 py-6" style={{ minWidth: '320px' }}>
           <div className="flex items-center gap-4">
             <span className="text-slate-300 dark:text-slate-600 text-lg">▶</span>
             <input
@@ -172,10 +196,24 @@ export default function ProjectTableRow({ project, isNew = false }: ProjectTable
   return (
     <>
       <tr
-        className="hover:bg-slate-50 dark:hover:bg-gray-750 cursor-pointer transition-all duration-150 group"
+        ref={setNodeRef}
+        style={style}
+        className={`hover:bg-slate-50 dark:hover:bg-gray-750 cursor-pointer transition-all duration-150 group ${isDragging ? 'opacity-50 bg-blue-50 dark:bg-blue-900/20' : ''}`}
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <td className="px-8 py-6" style={{ minWidth: '350px' }}>
+        <td className="px-4 py-6" style={{ width: '50px' }}>
+          {/* ドラッグハンドル */}
+          <div
+            {...attributes}
+            {...listeners}
+            onClick={(e) => e.stopPropagation()}
+            className="cursor-grab active:cursor-grabbing text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+            title="ドラッグして並び替え"
+          >
+            <DragHandleIcon className="w-5 h-5" />
+          </div>
+        </td>
+        <td className="px-6 py-6" style={{ minWidth: '320px' }}>
           <div className="flex items-center gap-4">
             <span className={`text-slate-400 text-lg transform transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}>
               ▶
@@ -272,20 +310,14 @@ export default function ProjectTableRow({ project, isNew = false }: ProjectTable
       </tr>
       {isExpanded && (
         <tr className="bg-slate-50/50 dark:bg-gray-800/30">
-          <td colSpan={7} className="px-8 py-8">
+          <td colSpan={8} className="px-8 py-8">
             <div className="ml-8 pl-8 border-l-3 border-slate-200 dark:border-slate-700">
               <div className="flex items-center justify-between mb-6">
                 <h4 className="text-lg font-bold text-slate-700 dark:text-slate-200">
                   タスク・マイルストーン
                 </h4>
               </div>
-              <div className="space-y-3">
-                {project.tasks.map((task) => (
-                  <TaskRow key={task.id} projectId={project.id} task={task} />
-                ))}
-                {/* タスク追加行 */}
-                <AddTaskRow projectId={project.id} />
-              </div>
+              <SortableTaskList projectId={project.id} tasks={project.tasks} />
             </div>
           </td>
         </tr>

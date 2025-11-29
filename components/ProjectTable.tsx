@@ -1,13 +1,27 @@
 'use client';
 
 import { useState } from 'react';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from '@dnd-kit/core';
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 import { filterProjects } from '@/lib/utils';
 import { useProjectStore } from '@/store/useProjectStore';
 import ProjectTableRow from './ProjectTableRow';
 import AddProjectRow from './AddProjectRow';
 
 export default function ProjectTable() {
-  const { projects, filter } = useProjectStore();
+  const { projects, filter, reorderProjects } = useProjectStore();
   const [searchQuery, setSearchQuery] = useState('');
   
   // フィルターと検索を適用
@@ -21,6 +35,25 @@ export default function ProjectTable() {
       project.tasks.some(task => task.title.toLowerCase().includes(query))
     );
   }
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    
+    if (over && active.id !== over.id) {
+      reorderProjects(active.id as string, over.id as string);
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -54,47 +87,61 @@ export default function ProjectTable() {
       </div>
 
       {/* テーブル */}
-      <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full" style={{ minWidth: '1400px' }}>
-            <thead>
-              <tr className="bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50 dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 border-b border-slate-200 dark:border-slate-700">
-                <th className="px-8 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '350px' }}>
-                  案件名
-                </th>
-                <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '220px' }}>
-                  顧客名
-                </th>
-                <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '180px' }}>
-                  プラットフォーム
-                </th>
-                <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '160px' }}>
-                  種別
-                </th>
-                <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '160px' }}>
-                  進捗
-                </th>
-                <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '180px' }}>
-                  合計金額
-                </th>
-                <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '160px' }}>
-                  操作
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-              {filteredProjects.map((project) => {
-                const isNew = !project.name || project.name.trim() === '';
-                return (
-                  <ProjectTableRow key={project.id} project={project} isNew={isNew} />
-                );
-              })}
-              {/* 末尾の追加行 */}
-              <AddProjectRow />
-            </tbody>
-          </table>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full" style={{ minWidth: '1400px' }}>
+              <thead>
+                <tr className="bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50 dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 border-b border-slate-200 dark:border-slate-700">
+                  <th className="px-4 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ width: '50px' }}>
+                    {/* ドラッグハンドル用 */}
+                  </th>
+                  <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '320px' }}>
+                    案件名
+                  </th>
+                  <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '220px' }}>
+                    顧客名
+                  </th>
+                  <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '180px' }}>
+                    プラットフォーム
+                  </th>
+                  <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '160px' }}>
+                    種別
+                  </th>
+                  <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '160px' }}>
+                    進捗
+                  </th>
+                  <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '180px' }}>
+                    合計金額
+                  </th>
+                  <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '160px' }}>
+                    操作
+                  </th>
+                </tr>
+              </thead>
+              <SortableContext
+                items={filteredProjects.map(p => p.id)}
+                strategy={verticalListSortingStrategy}
+              >
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
+                  {filteredProjects.map((project) => {
+                    const isNew = !project.name || project.name.trim() === '';
+                    return (
+                      <ProjectTableRow key={project.id} project={project} isNew={isNew} />
+                    );
+                  })}
+                  {/* 末尾の追加行 */}
+                  <AddProjectRow />
+                </tbody>
+              </SortableContext>
+            </table>
+          </div>
         </div>
-      </div>
+      </DndContext>
     </div>
   );
 }

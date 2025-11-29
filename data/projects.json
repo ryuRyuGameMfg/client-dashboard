@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "name": "Webブラウザの開発サポート【VR】",
+      "name": "VR / Webブラウザ開発サポート",
       "client": "ravem8",
       "platform": "coconala",
       "type": "consulting",
@@ -57,7 +57,7 @@
       "updatedAt": "2025-11-29T08:27:53.765Z"
     },
     {
-      "name": "AIキャラクターシステム開発",
+      "name": "WebGL / AIキャラクター",
       "client": "辻 様",
       "platform": "lancers",
       "type": "development",
@@ -86,10 +86,10 @@
       "notes": "",
       "id": "1764404477619-8f9t0jl11",
       "createdAt": "2025-11-29T08:21:17.619Z",
-      "updatedAt": "2025-11-29T08:39:20.946Z"
+      "updatedAt": "2025-11-29T09:19:10.591Z"
     },
     {
-      "name": "Unityオンライン講座",
+      "name": "Unity / オンライン講座",
       "client": "nana703",
       "platform": "coconala",
       "type": "consulting",
@@ -121,7 +121,7 @@
       "updatedAt": "2025-11-29T08:31:23.175Z"
     },
     {
-      "name": "書籍朗読用AIキャラクターシステム",
+      "name": "PC / AIキャラクター (書籍朗読)",
       "client": "長谷川圭太 様",
       "platform": "coconala",
       "type": "development",
@@ -166,10 +166,10 @@
       "notes": "",
       "id": "1764404764627-0o89lq7rz",
       "createdAt": "2025-11-29T08:26:04.627Z",
-      "updatedAt": "2025-11-29T08:30:50.105Z"
+      "updatedAt": "2025-11-29T09:19:26.435Z"
     },
     {
-      "name": "AIキャラクターシステム開発",
+      "name": "PC / AIキャラクター (YouTube)",
       "client": "長谷川圭太 様",
       "platform": "coconala",
       "type": "development",
@@ -214,10 +214,10 @@
       "notes": "",
       "id": "1764404811569-ur8l1gh94",
       "createdAt": "2025-11-29T08:26:51.569Z",
-      "updatedAt": "2025-11-29T08:31:00.207Z"
+      "updatedAt": "2025-11-29T09:19:30.607Z"
     },
     {
-      "name": "Cluster サンタ村",
+      "name": "Cluster / サンタ村ワールド",
       "client": "サンタ村",
       "platform": "lancers",
       "type": "development",
@@ -243,7 +243,7 @@
         },
         {
           "title": "納品",
-          "deadline": null,
+          "deadline": "2025-11-30T00:00:00.000Z",
           "completed": false,
           "status": "not_started",
           "amount": 158000,
@@ -262,10 +262,10 @@
       "notes": "",
       "id": "1764405347930-r26pvsxy0",
       "createdAt": "2025-11-29T08:35:47.930Z",
-      "updatedAt": "2025-11-29T08:36:31.157Z"
+      "updatedAt": "2025-11-29T09:24:35.857Z"
     },
     {
-      "name": "Unity UI改善",
+      "name": "Unity / UI改善",
       "client": "H_SATOU",
       "platform": "coconala",
       "type": "development",
@@ -289,7 +289,7 @@
       "updatedAt": "2025-11-29T08:37:39.786Z"
     },
     {
-      "name": "水質シミュレーション VR",
+      "name": "VR / 水質シミュレーション",
       "client": "",
       "platform": "direct",
       "type": "development",
@@ -315,7 +315,7 @@
         },
         {
           "title": "納品",
-          "deadline": null,
+          "deadline": "2025-12-31T00:00:00.000Z",
           "completed": false,
           "status": "not_started",
           "amount": 165000,
@@ -326,8 +326,72 @@
       "notes": "",
       "id": "1764405591305-lua4qr2ff",
       "createdAt": "2025-11-29T08:39:51.305Z",
-      "updatedAt": "2025-11-29T08:40:23.598Z"
+      "updatedAt": "2025-11-29T09:25:18.510Z"
+    },
+    {
+      "name": "Web / クイズゲーム",
+      "client": "",
+      "platform": "direct",
+      "type": "development",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [
+        {
+          "title": "着金",
+          "deadline": "2025-09-30T00:00:00.000Z",
+          "completed": true,
+          "status": "completed",
+          "amount": 836000,
+          "id": "1764408544521-rzlnd1fpg"
+        },
+        {
+          "title": "着金",
+          "deadline": "2025-10-17T00:00:00.000Z",
+          "completed": true,
+          "status": "completed",
+          "amount": 253000,
+          "id": "1764408369356-g1wg00isn"
+        },
+        {
+          "title": "着金",
+          "deadline": "2025-11-10T00:00:00.000Z",
+          "completed": true,
+          "status": "completed",
+          "amount": 111000,
+          "id": "1764408427693-5n5uqi2gz"
+        },
+        {
+          "title": "クイズ画像の差し替え",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764408668886-ty3p51miy"
+        },
+        {
+          "title": "ドラック&ドロップの当たり判定",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764408679305-xn2e8x736"
+        },
+        {
+          "title": "「隠れているのは」の完成",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764408692969-1d64po4p6"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764408363563-jrhm5yy92",
+      "createdAt": "2025-11-29T09:26:03.563Z",
+      "updatedAt": "2025-11-29T09:31:45.645Z"
     }
   ],
-  "lastUpdated": "2025-11-29T08:40:23.603Z"
+  "lastUpdated": "2025-11-29T09:31:45.650Z"
 }

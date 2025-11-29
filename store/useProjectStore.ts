@@ -16,12 +16,14 @@ interface ProjectStore {
   addProject: (project: Omit<Project, 'id' | 'createdAt' | 'updatedAt'>) => void;
   updateProject: (id: string, updates: Partial<Project>) => void;
   deleteProject: (id: string) => void;
+  reorderProjects: (activeId: string, overId: string) => void;
   
   // タスク操作
   addTask: (projectId: string, task: Omit<Task, 'id'>) => void;
   updateTask: (projectId: string, taskId: string, updates: Partial<Task>) => void;
   deleteTask: (projectId: string, taskId: string) => void;
   toggleTask: (projectId: string, taskId: string) => void;
+  reorderTasks: (projectId: string, activeId: string, overId: string) => void;
   
   // 提案操作
   addProposal: (projectId: string, proposal: Omit<Proposal, 'id'>) => void;
@@ -99,6 +101,22 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
     });
   },
 
+  reorderProjects: (activeId, overId) => {
+    set((state) => {
+      const oldIndex = state.projects.findIndex((p) => p.id === activeId);
+      const newIndex = state.projects.findIndex((p) => p.id === overId);
+      
+      if (oldIndex === -1 || newIndex === -1) return state;
+      
+      const newProjects = [...state.projects];
+      const [removed] = newProjects.splice(oldIndex, 1);
+      newProjects.splice(newIndex, 0, removed);
+      
+      saveDataToStorage(newProjects).catch(console.error);
+      return { projects: newProjects };
+    });
+  },
+
   addTask: (projectId, taskData) => {
     const newTask: Task = {
       ...taskData,
@@ -166,6 +184,31 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
     if (!task) return;
 
     get().updateTask(projectId, taskId, { completed: !task.completed });
+  },
+
+  reorderTasks: (projectId, activeId, overId) => {
+    set((state) => {
+      const project = state.projects.find((p) => p.id === projectId);
+      if (!project) return state;
+
+      const oldIndex = project.tasks.findIndex((t) => t.id === activeId);
+      const newIndex = project.tasks.findIndex((t) => t.id === overId);
+      
+      if (oldIndex === -1 || newIndex === -1) return state;
+      
+      const newTasks = [...project.tasks];
+      const [removed] = newTasks.splice(oldIndex, 1);
+      newTasks.splice(newIndex, 0, removed);
+      
+      const newProjects = state.projects.map((p) =>
+        p.id === projectId
+          ? { ...p, tasks: newTasks, updatedAt: new Date() }
+          : p
+      );
+      
+      saveDataToStorage(newProjects).catch(console.error);
+      return { projects: newProjects };
+    });
   },
 
   addProposal: (projectId, proposalData) => {

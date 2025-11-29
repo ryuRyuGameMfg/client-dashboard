@@ -190,3 +190,84 @@ export function isDeadlineNear(deadline: Date | null): boolean {
   return diffDays >= 0 && diffDays <= 3;
 }
 
+// 月別の売上データを計算（過去6ヶ月〜未来6ヶ月）
+export interface MonthlyRevenueData {
+  month: string;           // YYYY-MM形式
+  monthLabel: string;      // 表示用（例: "2024年1月"）
+  confirmed: number;       // 確定売上（完了タスク）
+  expected: number;        // 見込み売上（未完了タスク）
+  total: number;           // 合計
+  grossConfirmed: number;  // 手数料前確定
+  grossExpected: number;   // 手数料前見込み
+}
+
+export function calculateMonthlyRevenueData(projects: Project[]): MonthlyRevenueData[] {
+  const now = new Date();
+  const monthsData: Map<string, MonthlyRevenueData> = new Map();
+  
+  // 過去6ヶ月〜未来6ヶ月の月を初期化
+  for (let i = -6; i <= 6; i++) {
+    const date = new Date(now.getFullYear(), now.getMonth() + i, 1);
+    const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+    const monthLabel = `${date.getFullYear()}年${date.getMonth() + 1}月`;
+    
+    monthsData.set(monthKey, {
+      month: monthKey,
+      monthLabel,
+      confirmed: 0,
+      expected: 0,
+      total: 0,
+      grossConfirmed: 0,
+      grossExpected: 0,
+    });
+  }
+  
+  // 各タスクの期限に基づいて売上を計算
+  projects.forEach((project) => {
+    project.tasks.forEach((task) => {
+      if (!task.deadline || !task.amount) return;
+      
+      const taskDate = new Date(task.deadline);
+      const monthKey = `${taskDate.getFullYear()}-${String(taskDate.getMonth() + 1).padStart(2, '0')}`;
+      
+      const data = monthsData.get(monthKey);
+      if (!data) return;
+      
+      const netAmount = calculateNetAmount(task.amount, project.platform);
+      
+      if (task.completed) {
+        data.confirmed += netAmount;
+        data.grossConfirmed += task.amount;
+      } else {
+        data.expected += netAmount;
+        data.grossExpected += task.amount;
+      }
+      data.total = data.confirmed + data.expected;
+    });
+  });
+  
+  // 月順にソートして配列で返す
+  return Array.from(monthsData.values()).sort((a, b) => a.month.localeCompare(b.month));
+}
+
+// 進行中の案件数を計算（タスクのステータスベース）
+export function countActiveProjects(projects: Project[]): number {
+  return projects.filter((p) => 
+    p.tasks.some(t => t.status === 'in_progress')
+  ).length;
+}
+
+// 期限間近の案件数を計算（タスクの期限ベース、3日以内）
+export function countNearDeadlineProjects(projects: Project[]): number {
+  const now = new Date();
+  return projects.filter((p) => {
+    return p.tasks.some(task => {
+      if (!task.deadline || task.completed) return false;
+      const taskDate = new Date(task.deadline);
+      const diffTime = taskDate.getTime() - now.getTime();
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      return diffDays >= 0 && diffDays <= 3;
+    });
+  }).length;
+}
+
