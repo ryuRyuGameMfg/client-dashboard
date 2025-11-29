@@ -33,6 +33,7 @@ function EditableText({
   completed?: boolean;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const isComposingRef = useRef(false);
 
   const handleBlur = () => {
     if (inputRef.current && inputRef.current.value !== value) {
@@ -41,7 +42,10 @@ function EditableText({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === 'Escape') {
+    // IME入力中はキーイベントを無視
+    if (isComposingRef.current) return;
+    
+    if (e.key === 'Escape') {
       inputRef.current?.blur();
     }
   };
@@ -51,8 +55,11 @@ function EditableText({
       ref={inputRef}
       type="text"
       defaultValue={value}
+      key={value} // valueが変わったら再マウント
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
+      onCompositionStart={() => { isComposingRef.current = true; }}
+      onCompositionEnd={() => { isComposingRef.current = false; }}
       placeholder={placeholder}
       className={`w-full px-3 py-2 bg-transparent border border-transparent hover:border-slate-300 focus:border-blue-500 focus:bg-white dark:focus:bg-gray-800 rounded-lg text-base transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
         completed ? 'line-through text-slate-400' : 'text-slate-800 dark:text-white font-medium'

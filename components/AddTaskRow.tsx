@@ -13,7 +13,7 @@ export default function AddTaskRow({ projectId }: AddTaskRowProps) {
   const handleAddTask = () => {
     // 空のタスクを追加（タイトルは後で編集）
     addTask(projectId, {
-      title: '新しいタスク',
+      title: '',
       deadline: null,
       completed: false,
       status: 'not_started',

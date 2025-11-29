@@ -1,0 +1,172 @@
+{
+  "projects": [
+    {
+      "name": "Webブラウザの開発サポート【VR】",
+      "client": "ravem8",
+      "platform": "coconala",
+      "type": "consulting",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [
+        {
+          "title": "ご返信",
+          "deadline": "2025-11-29T00:00:00.000Z",
+          "completed": false,
+          "status": "in_progress",
+          "amount": 0,
+          "id": "1764404415888-l259ce6yl"
+        },
+        {
+          "title": "ご契約",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764404422356-wkj9ecbzt"
+        },
+        {
+          "title": "事前調査",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764404467640-hfshbinic"
+        },
+        {
+          "title": "ビデオチャット ( 60~90分)",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764404505800-bcyp7n2ro"
+        },
+        {
+          "title": "納品",
+          "deadline": "2025-12-31T00:00:00.000Z",
+          "completed": false,
+          "status": "not_started",
+          "amount": 55000,
+          "id": "1764404625556-l35j07fvd"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764404385859-5ndmpqvwg",
+      "createdAt": "2025-11-29T08:19:45.859Z",
+      "updatedAt": "2025-11-29T08:27:53.765Z"
+    },
+    {
+      "name": "AIキャラクターシステム開発",
+      "client": "辻 様",
+      "platform": "lancers",
+      "type": "development",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [
+        {
+          "title": "納品",
+          "deadline": "2025-11-29T00:00:00.000Z",
+          "completed": false,
+          "status": "on_hold",
+          "amount": 0,
+          "id": "1764404779917-6hf4kmt2y"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764404477619-8f9t0jl11",
+      "createdAt": "2025-11-29T08:21:17.619Z",
+      "updatedAt": "2025-11-29T08:27:14.676Z"
+    },
+    {
+      "name": "Unityオンライン講座",
+      "client": "nana703",
+      "platform": "coconala",
+      "type": "consulting",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [
+        {
+          "title": "お見積もりの提出",
+          "deadline": "2025-11-30T00:00:00.000Z",
+          "completed": false,
+          "status": "in_progress",
+          "amount": 0,
+          "id": "1764404715778-4ngppntsh"
+        },
+        {
+          "title": "ビデオチャット ( 12月分 )",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764404722500-sl0mcbjb1"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764404695878-2us5pptg3",
+      "createdAt": "2025-11-29T08:24:55.878Z",
+      "updatedAt": "2025-11-29T08:25:47.436Z"
+    },
+    {
+      "name": "書籍朗読用AIキャラクターシステム",
+      "client": "長谷川圭太 様",
+      "platform": "coconala",
+      "type": "development",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [],
+      "proposals": [],
+      "notes": "",
+      "id": "1764404764627-0o89lq7rz",
+      "createdAt": "2025-11-29T08:26:04.627Z",
+      "updatedAt": "2025-11-29T08:27:22.836Z"
+    },
+    {
+      "name": "AIキャラクターシステム開発",
+      "client": "長谷川圭太 様",
+      "platform": "coconala",
+      "type": "development",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [
+        {
+          "title": "プロジェクト立ち上げ",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764404960098-ub1717qmz"
+        },
+        {
+          "title": "開発",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764404964404-w4bc785sz"
+        },
+        {
+          "title": "",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764404969140-53t1oznvd"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764404811569-ur8l1gh94",
+      "createdAt": "2025-11-29T08:26:51.569Z",
+      "updatedAt": "2025-11-29T08:29:42.062Z"
+    }
+  ],
+  "lastUpdated": "2025-11-29T08:29:42.067Z"
+}

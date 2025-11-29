@@ -1,31 +1,23 @@
 import { Project, DataFile } from '@/types';
 
-const DATA_FILE_NAME = 'client-dashboard-data.json';
-
-// データファイルのパスを取得（ブラウザ環境ではダウンロードフォルダを想定）
-function getDataFilePath(): string {
-  if (typeof window === 'undefined') {
-    return DATA_FILE_NAME;
-  }
-  // ブラウザ環境では、ユーザーが指定した場所に保存する想定
-  // 実際の実装では、ファイルシステムAPIを使用するか、ダウンロード機能を使用
-  return DATA_FILE_NAME;
-}
-
-// LocalStorageからデータを読み込む
-export function loadDataFromStorage(): Project[] {
+// APIからデータを読み込む
+async function loadDataFromAPI(): Promise<Project[]> {
   if (typeof window === 'undefined') {
     return [];
   }
 
   try {
-    const stored = localStorage.getItem('client-dashboard-data');
-    if (!stored) {
+    const response = await fetch('/api/data');
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    
+    const data: DataFile = await response.json();
+    
+    if (!data.projects || data.projects.length === 0) {
       return [];
     }
 
-    const data: DataFile = JSON.parse(stored);
-    
     // Date文字列をDateオブジェクトに変換
     return data.projects.map(project => ({
       ...project,
@@ -42,28 +34,61 @@ export function loadDataFromStorage(): Project[] {
       })),
     }));
   } catch (error) {
-    console.error('Failed to load data from storage:', error);
+    console.error('Failed to load data from API:', error);
     return [];
   }
 }
 
-// LocalStorageにデータを保存（自動保存のみ）
-export function saveDataToStorage(projects: Project[]): void {
+// APIにデータを保存
+async function saveDataToAPI(projects: Project[]): Promise<void> {
   if (typeof window === 'undefined') {
     return;
   }
 
   try {
-    const data: DataFile = {
-      projects,
-      lastUpdated: new Date().toISOString(),
-    };
-
-    // LocalStorageに即座に保存
-    localStorage.setItem('client-dashboard-data', JSON.stringify(data));
+    const response = await fetch('/api/data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ projects }),
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to save data');
+    }
   } catch (error) {
-    console.error('Failed to save data to storage:', error);
+    console.error('Failed to save data to API:', error);
   }
 }
 
+// データを読み込む（APIから）
+export async function loadDataFromStorage(): Promise<Project[]> {
+  return await loadDataFromAPI();
+}
 
+// データを保存（APIに自動保存）
+export async function saveDataToStorage(projects: Project[]): Promise<void> {
+  await saveDataToAPI(projects);
+}
+
+// 互換性のための関数（使用しない）
+export function getFileHandle(): FileSystemFileHandle | null {
+  return null;
+}
+
+export function setFileHandle(): void {
+  // 使用しない
+}
+
+export function hasFileHandle(): boolean {
+  return true;
+}
+
+export async function initializeDataFile(): Promise<Project[]> {
+  return await loadDataFromAPI();
+}
+
+export async function loadFileHandleFromIndexedDB(): Promise<FileSystemFileHandle | null> {
+  return null;
+}

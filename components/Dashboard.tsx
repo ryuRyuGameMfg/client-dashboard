@@ -8,6 +8,7 @@ import { CurrencyIcon, BriefcaseIcon, ClockIcon, ChartIcon } from './Icons';
 import ProjectTable from './ProjectTable';
 import ProjectSidePanel from './ProjectSidePanel';
 import FilterBar from './FilterBar';
+import FileSetupDialog from './FileSetupDialog';
 
 export default function Dashboard() {
   const { projects, initialize } = useProjectStore();
@@ -16,7 +17,12 @@ export default function Dashboard() {
     initialize();
   }, [initialize]);
 
-  return <DashboardContent />;
+  return (
+    <>
+      <FileSetupDialog />
+      <DashboardContent />
+    </>
+  );
 }
 
 function DashboardContent() {

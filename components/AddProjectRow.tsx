@@ -56,14 +56,9 @@ export default function AddProjectRow() {
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') handleAdd();
                 if (e.key === 'Escape') handleCancel();
               }}
-              onBlur={() => {
-                if (!projectName.trim()) {
-                  handleCancel();
-                }
-              }}
+              onBlur={handleAdd}
               placeholder="新しい案件名を入力..."
               className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border border-blue-300 dark:border-blue-600 rounded-xl text-base text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
@@ -75,7 +70,7 @@ export default function AddProjectRow() {
         <td className="px-6 py-6 text-base text-slate-400" style={{ minWidth: '160px' }}>-</td>
         <td className="px-6 py-6 text-base text-slate-400" style={{ minWidth: '180px' }}>-</td>
         <td className="px-6 py-6 text-sm text-slate-400" style={{ minWidth: '160px' }}>
-          Enter / Esc
+          Escでキャンセル
         </td>
       </tr>
     );

@@ -12,6 +12,7 @@ interface ProjectStore {
   initialize: () => void;
   
   // プロジェクト操作
+  setProjects: (projects: Project[]) => void;
   addProject: (project: Omit<Project, 'id' | 'createdAt' | 'updatedAt'>) => void;
   updateProject: (id: string, updates: Partial<Project>) => void;
   deleteProject: (id: string) => void;
@@ -47,9 +48,15 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   viewMode: 'table',
   filter: 'all',
 
-  initialize: () => {
-    const projects = loadDataFromStorage();
+  initialize: async () => {
+    const projects = await loadDataFromStorage();
     set({ projects });
+  },
+
+  setProjects: (projects) => {
+    set({ projects });
+    // 非同期で保存（エラーを無視）
+    saveDataToStorage(projects).catch(console.error);
   },
 
   addProject: (projectData) => {
@@ -62,7 +69,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
     
     set((state) => {
       const newProjects = [...state.projects, newProject];
-      saveDataToStorage(newProjects);
+      // 非同期で保存（エラーを無視）
+      saveDataToStorage(newProjects).catch(console.error);
       return { projects: newProjects };
     });
   },
@@ -74,7 +82,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
           ? { ...project, ...updates, updatedAt: new Date() }
           : project
       );
-      saveDataToStorage(newProjects);
+      // 非同期で保存（エラーを無視）
+      saveDataToStorage(newProjects).catch(console.error);
       return { projects: newProjects };
     });
   },
@@ -106,7 +115,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
             }
           : project
       );
-      saveDataToStorage(newProjects);
+      // 非同期で保存（エラーを無視）
+      saveDataToStorage(newProjects).catch(console.error);
       return { projects: newProjects };
     });
   },
@@ -124,7 +134,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
             }
           : project
       );
-      saveDataToStorage(newProjects);
+      // 非同期で保存（エラーを無視）
+      saveDataToStorage(newProjects).catch(console.error);
       return { projects: newProjects };
     });
   },
@@ -140,7 +151,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
             }
           : project
       );
-      saveDataToStorage(newProjects);
+      // 非同期で保存（エラーを無視）
+      saveDataToStorage(newProjects).catch(console.error);
       return { projects: newProjects };
     });
   },
@@ -172,7 +184,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
             }
           : project
       );
-      saveDataToStorage(newProjects);
+      // 非同期で保存（エラーを無視）
+      saveDataToStorage(newProjects).catch(console.error);
       return { projects: newProjects };
     });
   },
@@ -190,7 +203,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
             }
           : project
       );
-      saveDataToStorage(newProjects);
+      // 非同期で保存（エラーを無視）
+      saveDataToStorage(newProjects).catch(console.error);
       return { projects: newProjects };
     });
   },
@@ -206,7 +220,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
             }
           : project
       );
-      saveDataToStorage(newProjects);
+      // 非同期で保存（エラーを無視）
+      saveDataToStorage(newProjects).catch(console.error);
       return { projects: newProjects };
     });
   },
@@ -225,7 +240,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
 
   save: () => {
     const { projects } = get();
-    saveDataToStorage(projects);
+    // 非同期で保存（エラーを無視）
+    saveDataToStorage(projects).catch(console.error);
   },
 }));
 
