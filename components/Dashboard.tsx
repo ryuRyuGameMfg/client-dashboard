@@ -86,11 +86,17 @@ function DashboardContent() {
           
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl transition-all duration-300">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">見込み売上</div>
+              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">見込み売上（手数料差し引き後）</div>
               <ChartIcon className="w-5 h-5 text-purple-500" />
             </div>
             <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">
               {formatCurrency(revenue.total)}
+            </div>
+            <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              翌月: {formatCurrency(revenue.nextMonth)}
+            </div>
+            <div className="mt-1 text-xs text-gray-400 dark:text-gray-500">
+              手数料前: {formatCurrency(revenue.grossTotal)}
             </div>
           </div>
         </div>

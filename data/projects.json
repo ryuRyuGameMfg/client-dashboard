@@ -67,18 +67,26 @@
       "tasks": [
         {
           "title": "納品",
-          "deadline": "2025-11-29T00:00:00.000Z",
+          "deadline": "2025-10-31T00:00:00.000Z",
+          "completed": true,
+          "status": "completed",
+          "amount": 132000,
+          "id": "1764404779917-6hf4kmt2y"
+        },
+        {
+          "title": "納品",
+          "deadline": "2025-11-30T00:00:00.000Z",
           "completed": false,
           "status": "on_hold",
-          "amount": 0,
-          "id": "1764404779917-6hf4kmt2y"
+          "amount": 110000,
+          "id": "1764405522878-2287h0vkc"
         }
       ],
       "proposals": [],
       "notes": "",
       "id": "1764404477619-8f9t0jl11",
       "createdAt": "2025-11-29T08:21:17.619Z",
-      "updatedAt": "2025-11-29T08:27:14.676Z"
+      "updatedAt": "2025-11-29T08:39:20.946Z"
     },
     {
       "name": "Unityオンライン講座",
@@ -94,15 +102,15 @@
           "deadline": "2025-11-30T00:00:00.000Z",
           "completed": false,
           "status": "in_progress",
-          "amount": 0,
+          "amount": 30000,
           "id": "1764404715778-4ngppntsh"
         },
         {
           "title": "ビデオチャット ( 12月分 )",
-          "deadline": null,
+          "deadline": "2025-12-31T00:00:00.000Z",
           "completed": false,
           "status": "not_started",
-          "amount": 0,
+          "amount": 9500,
           "id": "1764404722500-sl0mcbjb1"
         }
       ],
@@ -110,7 +118,7 @@
       "notes": "",
       "id": "1764404695878-2us5pptg3",
       "createdAt": "2025-11-29T08:24:55.878Z",
-      "updatedAt": "2025-11-29T08:25:47.436Z"
+      "updatedAt": "2025-11-29T08:31:23.175Z"
     },
     {
       "name": "書籍朗読用AIキャラクターシステム",
@@ -120,12 +128,45 @@
       "amount": 0,
       "deadline": null,
       "status": "free_estimate",
-      "tasks": [],
+      "tasks": [
+        {
+          "title": "プロジェクト立ち上げ",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764405001033-6v0p3lfze"
+        },
+        {
+          "title": "開発",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764405022538-iab90oxmp"
+        },
+        {
+          "title": "仮納品",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764405025591-69pmgb3i9"
+        },
+        {
+          "title": "納品",
+          "deadline": "2025-12-30T00:00:00.000Z",
+          "completed": false,
+          "status": "not_started",
+          "amount": 340000,
+          "id": "1764405032372-7n0mx50xv"
+        }
+      ],
       "proposals": [],
       "notes": "",
       "id": "1764404764627-0o89lq7rz",
       "createdAt": "2025-11-29T08:26:04.627Z",
-      "updatedAt": "2025-11-29T08:27:22.836Z"
+      "updatedAt": "2025-11-29T08:30:50.105Z"
     },
     {
       "name": "AIキャラクターシステム開発",
@@ -153,20 +194,140 @@
           "id": "1764404964404-w4bc785sz"
         },
         {
-          "title": "",
+          "title": "仮納品",
           "deadline": null,
           "completed": false,
           "status": "not_started",
           "amount": 0,
           "id": "1764404969140-53t1oznvd"
+        },
+        {
+          "title": "納品",
+          "deadline": "2025-12-20T00:00:00.000Z",
+          "completed": false,
+          "status": "not_started",
+          "amount": 75000,
+          "id": "1764404989720-1jw8gnld6"
         }
       ],
       "proposals": [],
       "notes": "",
       "id": "1764404811569-ur8l1gh94",
       "createdAt": "2025-11-29T08:26:51.569Z",
-      "updatedAt": "2025-11-29T08:29:42.062Z"
+      "updatedAt": "2025-11-29T08:31:00.207Z"
+    },
+    {
+      "name": "Cluster サンタ村",
+      "client": "サンタ村",
+      "platform": "lancers",
+      "type": "development",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [
+        {
+          "title": "ポニーの設置",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764405361424-00pbnyqjk"
+        },
+        {
+          "title": "看板設置",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764405369495-rlz4xcby8"
+        },
+        {
+          "title": "納品",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 158000,
+          "id": "1764405375106-txyupjnk6"
+        },
+        {
+          "title": "お見積もり",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764405380546-4nt6bybvb"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764405347930-r26pvsxy0",
+      "createdAt": "2025-11-29T08:35:47.930Z",
+      "updatedAt": "2025-11-29T08:36:31.157Z"
+    },
+    {
+      "name": "Unity UI改善",
+      "client": "H_SATOU",
+      "platform": "coconala",
+      "type": "development",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [
+        {
+          "title": "納品",
+          "deadline": "2025-11-30T00:00:00.000Z",
+          "completed": true,
+          "status": "completed",
+          "amount": 240000,
+          "id": "1764405438483-ipxwb6e3m"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764405420484-bb0g9rje6",
+      "createdAt": "2025-11-29T08:37:00.484Z",
+      "updatedAt": "2025-11-29T08:37:39.786Z"
+    },
+    {
+      "name": "水質シミュレーション VR",
+      "client": "",
+      "platform": "direct",
+      "type": "development",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [
+        {
+          "title": "調整",
+          "deadline": null,
+          "completed": false,
+          "status": "in_progress",
+          "amount": 0,
+          "id": "1764405594256-0o6m9hqol"
+        },
+        {
+          "title": "仮納品",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764405600574-zsjy6wvrn"
+        },
+        {
+          "title": "納品",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 165000,
+          "id": "1764405604252-z6e3x61u1"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764405591305-lua4qr2ff",
+      "createdAt": "2025-11-29T08:39:51.305Z",
+      "updatedAt": "2025-11-29T08:40:23.598Z"
     }
   ],
-  "lastUpdated": "2025-11-29T08:29:42.067Z"
+  "lastUpdated": "2025-11-29T08:40:23.603Z"
 }

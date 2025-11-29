@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Project, Platform, ProjectType } from '@/types';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, calculateNetAmount } from '@/lib/utils';
 import { PLATFORM_LABELS, TYPE_LABELS } from '@/types';
 import { useProjectStore } from '@/store/useProjectStore';
 import { TrashIcon, InfoIcon, EditIcon, CheckIcon, XIcon } from './Icons';
@@ -26,8 +26,12 @@ export default function ProjectTableRow({ project, isNew = false }: ProjectTable
   });
   const nameInputRef = useRef<HTMLInputElement>(null);
 
-  // タスクの合計金額を計算
-  const totalAmount = project.tasks.reduce((sum, task) => sum + (task.amount || 0), 0);
+  // タスクの合計金額を計算（手数料差し引き後）
+  const totalAmount = project.tasks.reduce((sum, task) => {
+    const taskAmount = task.amount || 0;
+    const netAmount = calculateNetAmount(taskAmount, project.platform);
+    return sum + netAmount;
+  }, 0);
   
   // タスク数とタスクの進捗を計算
   const taskCount = project.tasks.length;
