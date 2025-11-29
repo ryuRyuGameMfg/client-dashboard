@@ -1,0 +1,65 @@
+{
+  "projects": [
+    {
+      "id": "1732854000000-abc123",
+      "name": "AIキャラクターの開発",
+      "client": "辻様",
+      "platform": "lancers",
+      "type": "development",
+      "amount": 150000,
+      "deadline": "2024-12-01T00:00:00.000Z",
+      "status": "in_progress",
+      "tasks": [],
+      "proposals": [],
+      "notes": "",
+      "createdAt": "2024-11-29T00:00:00.000Z",
+      "updatedAt": "2024-11-29T00:00:00.000Z"
+    },
+    {
+      "id": "1732854000001-def456",
+      "name": "AIキャラクターの開発",
+      "client": "クーラー様",
+      "platform": "coconala",
+      "type": "development",
+      "amount": 100000,
+      "deadline": null,
+      "status": "in_progress",
+      "tasks": [],
+      "proposals": [],
+      "notes": "",
+      "createdAt": "2024-11-29T00:00:00.000Z",
+      "updatedAt": "2024-11-29T00:00:00.000Z"
+    },
+    {
+      "id": "1732854000002-ghi789",
+      "name": "AIキャラクターの開発",
+      "client": "クーラー様",
+      "platform": "coconala",
+      "type": "development",
+      "amount": 300000,
+      "deadline": null,
+      "status": "in_progress",
+      "tasks": [],
+      "proposals": [],
+      "notes": "",
+      "createdAt": "2024-11-29T00:00:00.000Z",
+      "updatedAt": "2024-11-29T00:00:00.000Z"
+    },
+    {
+      "id": "1732854000003-jkl012",
+      "name": "オンライン講座",
+      "client": "",
+      "platform": "coconala",
+      "type": "teaching",
+      "amount": 0,
+      "deadline": null,
+      "status": "free_estimate",
+      "tasks": [],
+      "proposals": [],
+      "notes": "",
+      "createdAt": "2024-11-29T00:00:00.000Z",
+      "updatedAt": "2024-11-29T00:00:00.000Z"
+    }
+  ],
+  "lastUpdated": "2024-11-29T00:00:00.000Z"
+}
