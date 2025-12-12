@@ -92,7 +92,7 @@ npm start
       "type": "development | teaching | consulting",
       "amount": 100000,
       "deadline": "2024-12-31T00:00:00.000Z",
-      "status": "free_estimate | paid_estimate | in_progress | completed | pending",
+      "status": "estimate | in_progress | completed | pending",
       "tasks": [
         {
           "id": "string",

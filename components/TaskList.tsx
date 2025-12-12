@@ -25,6 +25,8 @@ export default function TaskList({ projectId }: TaskListProps) {
       title: newTaskTitle,
       deadline: newTaskDeadline ? new Date(newTaskDeadline) : null,
       completed: false,
+      status: 'not_started',
+      amount: 0,
     });
 
     setNewTaskTitle('');

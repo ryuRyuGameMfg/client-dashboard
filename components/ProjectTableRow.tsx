@@ -3,9 +3,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Project, Platform, ProjectType } from '@/types';
+import { Project, Platform, ProjectType, ProjectStatus } from '@/types';
 import { formatCurrency, calculateNetAmount } from '@/lib/utils';
-import { PLATFORM_LABELS, TYPE_LABELS } from '@/types';
+import { PLATFORM_LABELS, TYPE_LABELS, STATUS_LABELS, STATUS_COLORS } from '@/types';
 import { useProjectStore } from '@/store/useProjectStore';
 import { TrashIcon, InfoIcon, EditIcon, CheckIcon, XIcon, DragHandleIcon } from './Icons';
 import TaskRow from './TaskRow';
@@ -18,7 +18,7 @@ interface ProjectTableRowProps {
 }
 
 export default function ProjectTableRow({ project, isNew = false }: ProjectTableRowProps) {
-  const { setSelectedProject, updateProject, deleteProject } = useProjectStore();
+  const { setSelectedProject, updateProject, deleteProject, hideCompletedTasks } = useProjectStore();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(isNew);
   const [editedProject, setEditedProject] = useState({
@@ -168,6 +168,7 @@ export default function ProjectTableRow({ project, isNew = false }: ProjectTable
             ))}
           </select>
         </td>
+        <td className="px-6 py-6 text-base text-slate-400" style={{ minWidth: '140px' }}>-</td>
         <td className="px-6 py-6 text-base text-slate-400" style={{ minWidth: '160px' }}>-</td>
         <td className="px-6 py-6 text-base text-slate-400" style={{ minWidth: '180px' }}>-</td>
         <td className="px-6 py-6" style={{ minWidth: '160px' }}>
@@ -243,6 +244,17 @@ export default function ProjectTableRow({ project, isNew = false }: ProjectTable
             {TYPE_LABELS[project.type]}
           </span>
         </td>
+        <td className="px-6 py-6" style={{ minWidth: '140px' }} onClick={(e) => e.stopPropagation()}>
+          <select
+            value={project.status}
+            onChange={(e) => updateProject(project.id, { status: e.target.value as ProjectStatus })}
+            className={`px-3 py-2 text-sm font-semibold rounded-full cursor-pointer border-0 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all ${STATUS_COLORS[project.status]}`}
+          >
+            {Object.entries(STATUS_LABELS).map(([value, label]) => (
+              <option key={value} value={value}>{label}</option>
+            ))}
+          </select>
+        </td>
         <td className="px-6 py-6" style={{ minWidth: '160px' }}>
           {taskCount > 0 ? (
             <div className="flex items-center gap-4">
@@ -310,14 +322,20 @@ export default function ProjectTableRow({ project, isNew = false }: ProjectTable
       </tr>
       {isExpanded && (
         <tr className="bg-slate-50/50 dark:bg-gray-800/30">
-          <td colSpan={8} className="px-8 py-8">
+          <td colSpan={9} className="px-8 py-8">
             <div className="ml-8 pl-8 border-l-3 border-slate-200 dark:border-slate-700">
               <div className="flex items-center justify-between mb-6">
                 <h4 className="text-lg font-bold text-slate-700 dark:text-slate-200">
                   タスク・マイルストーン
                 </h4>
               </div>
-              <SortableTaskList projectId={project.id} tasks={project.tasks} />
+              <SortableTaskList 
+                projectId={project.id} 
+                tasks={hideCompletedTasks 
+                  ? project.tasks.filter(t => !t.completed) 
+                  : project.tasks
+                } 
+              />
             </div>
           </td>
         </tr>

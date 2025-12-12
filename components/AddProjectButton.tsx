@@ -15,7 +15,7 @@ export default function AddProjectButton() {
       type: 'development',
       amount: 0,
       deadline: null,
-      status: 'free_estimate',
+      status: 'estimate',
       tasks: [],
       proposals: [],
       notes: '',

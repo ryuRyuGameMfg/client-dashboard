@@ -15,17 +15,20 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { filterProjects } from '@/lib/utils';
+import { filterProjects, filterByStatus } from '@/lib/utils';
 import { useProjectStore } from '@/store/useProjectStore';
 import ProjectTableRow from './ProjectTableRow';
 import AddProjectRow from './AddProjectRow';
 
 export default function ProjectTable() {
-  const { projects, filter, reorderProjects } = useProjectStore();
+  const { projects, filter, statusFilter, reorderProjects } = useProjectStore();
   const [searchQuery, setSearchQuery] = useState('');
   
   // フィルターと検索を適用
   let filteredProjects = filterProjects(projects, filter);
+  
+  // ステータスフィルターを適用
+  filteredProjects = filterByStatus(filteredProjects, statusFilter);
   
   if (searchQuery.trim()) {
     const query = searchQuery.toLowerCase();
@@ -94,7 +97,7 @@ export default function ProjectTable() {
       >
         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full" style={{ minWidth: '1400px' }}>
+            <table className="w-full" style={{ minWidth: '1600px' }}>
               <thead>
                 <tr className="bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50 dark:from-gray-800 dark:via-gray-750 dark:to-gray-800 border-b border-slate-200 dark:border-slate-700">
                   <th className="px-4 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ width: '50px' }}>
@@ -111,6 +114,9 @@ export default function ProjectTable() {
                   </th>
                   <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '160px' }}>
                     種別
+                  </th>
+                  <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '140px' }}>
+                    ステータス
                   </th>
                   <th className="px-6 py-6 text-left text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider" style={{ minWidth: '160px' }}>
                     進捗

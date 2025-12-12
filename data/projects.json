@@ -1,43 +1,123 @@
 {
   "projects": [
     {
+      "name": "VR / 水質シミュレーション",
+      "client": "",
+      "platform": "direct",
+      "type": "development",
+      "amount": 0,
+      "deadline": null,
+      "status": "in_progress",
+      "tasks": [
+        {
+          "title": "調整",
+          "deadline": null,
+          "completed": true,
+          "status": "in_progress",
+          "amount": 0,
+          "id": "1764405594256-0o6m9hqol"
+        },
+        {
+          "title": "仮納品",
+          "deadline": null,
+          "completed": true,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764405600574-zsjy6wvrn"
+        },
+        {
+          "title": "パラメータの調整・制限の調整",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1765519846825-tpkrebrbi"
+        },
+        {
+          "title": "ビジュアルの見直し",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1765519857612-o8j6b94ah"
+        },
+        {
+          "title": "畑・蛇口・桶のアセットを探す",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1764665101217-v8ii38s3l"
+        },
+        {
+          "title": "納品",
+          "deadline": "2025-12-31T00:00:00.000Z",
+          "completed": false,
+          "status": "not_started",
+          "amount": 165000,
+          "id": "1764405604252-z6e3x61u1"
+        },
+        {
+          "title": "ご請求書 ( 10,000円 追加 : ポートフォリオ掲載なし )",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 10000,
+          "id": "1765333416256-v3pf15mxp"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764405591305-lua4qr2ff",
+      "createdAt": "2025-11-29T08:39:51.305Z",
+      "updatedAt": "2025-12-12T06:11:04.951Z"
+    },
+    {
       "name": "VR / Webブラウザ開発サポート",
       "client": "ravem8",
       "platform": "coconala",
       "type": "consulting",
       "amount": 0,
       "deadline": null,
-      "status": "free_estimate",
+      "status": "in_progress",
       "tasks": [
         {
           "title": "ご返信",
           "deadline": "2025-11-29T00:00:00.000Z",
-          "completed": false,
-          "status": "in_progress",
+          "completed": true,
+          "status": "completed",
           "amount": 0,
           "id": "1764404415888-l259ce6yl"
         },
         {
           "title": "ご契約",
           "deadline": null,
-          "completed": false,
-          "status": "not_started",
+          "completed": true,
+          "status": "completed",
           "amount": 0,
           "id": "1764404422356-wkj9ecbzt"
         },
         {
           "title": "事前調査",
           "deadline": null,
-          "completed": false,
-          "status": "not_started",
+          "completed": true,
+          "status": "completed",
           "amount": 0,
           "id": "1764404467640-hfshbinic"
         },
         {
-          "title": "ビデオチャット ( 60~90分)",
-          "deadline": null,
+          "title": "調査結果の報告",
+          "deadline": "2025-12-10T00:00:00.000Z",
           "completed": false,
           "status": "not_started",
+          "amount": 0,
+          "id": "1765324537425-31can7hy7"
+        },
+        {
+          "title": "ビデオチャット ( 60~90分)",
+          "deadline": "2025-12-20T00:00:00.000Z",
+          "completed": false,
+          "status": "in_progress",
           "amount": 0,
           "id": "1764404505800-bcyp7n2ro"
         },
@@ -54,7 +134,7 @@
       "notes": "",
       "id": "1764404385859-5ndmpqvwg",
       "createdAt": "2025-11-29T08:19:45.859Z",
-      "updatedAt": "2025-11-29T08:27:53.765Z"
+      "updatedAt": "2025-12-09T23:55:52.244Z"
     },
     {
       "name": "WebGL / AIキャラクター",
@@ -63,7 +143,7 @@
       "type": "development",
       "amount": 0,
       "deadline": null,
-      "status": "free_estimate",
+      "status": "completed",
       "tasks": [
         {
           "title": "納品",
@@ -76,8 +156,8 @@
         {
           "title": "納品",
           "deadline": "2025-11-30T00:00:00.000Z",
-          "completed": false,
-          "status": "on_hold",
+          "completed": true,
+          "status": "completed",
           "amount": 110000,
           "id": "1764405522878-2287h0vkc"
         }
@@ -86,87 +166,7 @@
       "notes": "",
       "id": "1764404477619-8f9t0jl11",
       "createdAt": "2025-11-29T08:21:17.619Z",
-      "updatedAt": "2025-11-29T09:19:10.591Z"
-    },
-    {
-      "name": "Unity / オンライン講座",
-      "client": "nana703",
-      "platform": "coconala",
-      "type": "consulting",
-      "amount": 0,
-      "deadline": null,
-      "status": "free_estimate",
-      "tasks": [
-        {
-          "title": "お見積もりの提出",
-          "deadline": "2025-11-30T00:00:00.000Z",
-          "completed": false,
-          "status": "in_progress",
-          "amount": 30000,
-          "id": "1764404715778-4ngppntsh"
-        },
-        {
-          "title": "ビデオチャット ( 12月分 )",
-          "deadline": "2025-12-31T00:00:00.000Z",
-          "completed": false,
-          "status": "not_started",
-          "amount": 9500,
-          "id": "1764404722500-sl0mcbjb1"
-        }
-      ],
-      "proposals": [],
-      "notes": "",
-      "id": "1764404695878-2us5pptg3",
-      "createdAt": "2025-11-29T08:24:55.878Z",
-      "updatedAt": "2025-11-29T08:31:23.175Z"
-    },
-    {
-      "name": "PC / AIキャラクター (書籍朗読)",
-      "client": "長谷川圭太 様",
-      "platform": "coconala",
-      "type": "development",
-      "amount": 0,
-      "deadline": null,
-      "status": "free_estimate",
-      "tasks": [
-        {
-          "title": "プロジェクト立ち上げ",
-          "deadline": null,
-          "completed": false,
-          "status": "not_started",
-          "amount": 0,
-          "id": "1764405001033-6v0p3lfze"
-        },
-        {
-          "title": "開発",
-          "deadline": null,
-          "completed": false,
-          "status": "not_started",
-          "amount": 0,
-          "id": "1764405022538-iab90oxmp"
-        },
-        {
-          "title": "仮納品",
-          "deadline": null,
-          "completed": false,
-          "status": "not_started",
-          "amount": 0,
-          "id": "1764405025591-69pmgb3i9"
-        },
-        {
-          "title": "納品",
-          "deadline": "2025-12-30T00:00:00.000Z",
-          "completed": false,
-          "status": "not_started",
-          "amount": 340000,
-          "id": "1764405032372-7n0mx50xv"
-        }
-      ],
-      "proposals": [],
-      "notes": "",
-      "id": "1764404764627-0o89lq7rz",
-      "createdAt": "2025-11-29T08:26:04.627Z",
-      "updatedAt": "2025-11-29T09:19:26.435Z"
+      "updatedAt": "2025-12-02T08:27:00.492Z"
     },
     {
       "name": "PC / AIキャラクター (YouTube)",
@@ -175,46 +175,126 @@
       "type": "development",
       "amount": 0,
       "deadline": null,
-      "status": "free_estimate",
+      "status": "in_progress",
       "tasks": [
         {
           "title": "プロジェクト立ち上げ",
           "deadline": null,
-          "completed": false,
-          "status": "not_started",
+          "completed": true,
+          "status": "completed",
           "amount": 0,
           "id": "1764404960098-ub1717qmz"
         },
         {
           "title": "開発",
           "deadline": null,
-          "completed": false,
-          "status": "not_started",
+          "completed": true,
+          "status": "completed",
           "amount": 0,
           "id": "1764404964404-w4bc785sz"
         },
         {
-          "title": "仮納品",
+          "title": "プロンプト制御",
           "deadline": null,
-          "completed": false,
-          "status": "not_started",
+          "completed": true,
+          "status": "completed",
           "amount": 0,
           "id": "1764404969140-53t1oznvd"
         },
         {
+          "title": "UIの検討",
+          "deadline": null,
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1765216864914-ewlp3tv2q"
+        },
+        {
+          "title": "RAGのお見積もり",
+          "deadline": "2025-12-10T00:00:00.000Z",
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1765156413596-1elvxnk9o"
+        },
+        {
+          "title": "Youtube APIキーの発行のご連絡",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1765437609518-y4gq4kl0t"
+        },
+        {
+          "title": "モデル実装",
+          "deadline": null,
+          "completed": false,
+          "status": "in_progress",
+          "amount": 0,
+          "id": "1764404989720-1jw8gnld6"
+        },
+        {
           "title": "納品",
-          "deadline": "2025-12-20T00:00:00.000Z",
+          "deadline": "2025-12-31T00:00:00.000Z",
           "completed": false,
           "status": "not_started",
           "amount": 75000,
-          "id": "1764404989720-1jw8gnld6"
+          "id": "1765156473853-euy4mh50k"
+        },
+        {
+          "title": "納品",
+          "deadline": "2025-12-31T00:00:00.000Z",
+          "completed": false,
+          "status": "not_started",
+          "amount": 340000,
+          "id": "1765156445502-oysqlktqk"
         }
       ],
       "proposals": [],
       "notes": "",
       "id": "1764404811569-ur8l1gh94",
       "createdAt": "2025-11-29T08:26:51.569Z",
-      "updatedAt": "2025-11-29T09:19:30.607Z"
+      "updatedAt": "2025-12-11T20:43:41.843Z"
+    },
+    {
+      "name": "Unity / オンライン講座",
+      "client": "nana703",
+      "platform": "coconala",
+      "type": "consulting",
+      "amount": 0,
+      "deadline": null,
+      "status": "pending",
+      "tasks": [
+        {
+          "title": "お見積もりの提出",
+          "deadline": "2025-11-30T00:00:00.000Z",
+          "completed": true,
+          "status": "completed",
+          "amount": 30000,
+          "id": "1764404715778-4ngppntsh"
+        },
+        {
+          "title": "ビデオチャット ( 12月分 )",
+          "deadline": "2025-12-31T00:00:00.000Z",
+          "completed": true,
+          "status": "completed",
+          "amount": 9500,
+          "id": "1764404722500-sl0mcbjb1"
+        },
+        {
+          "title": "お見積もり",
+          "deadline": null,
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1764927699068-7hiwugp4n"
+        }
+      ],
+      "proposals": [],
+      "notes": "",
+      "id": "1764404695878-2us5pptg3",
+      "createdAt": "2025-11-29T08:24:55.878Z",
+      "updatedAt": "2025-12-05T21:09:59.310Z"
     },
     {
       "name": "Cluster / サンタ村ワールド",
@@ -223,12 +303,12 @@
       "type": "development",
       "amount": 0,
       "deadline": null,
-      "status": "free_estimate",
+      "status": "pending",
       "tasks": [
         {
           "title": "ポニーの設置",
           "deadline": null,
-          "completed": false,
+          "completed": true,
           "status": "not_started",
           "amount": 0,
           "id": "1764405361424-00pbnyqjk"
@@ -236,7 +316,7 @@
         {
           "title": "看板設置",
           "deadline": null,
-          "completed": false,
+          "completed": true,
           "status": "not_started",
           "amount": 0,
           "id": "1764405369495-rlz4xcby8"
@@ -244,7 +324,7 @@
         {
           "title": "納品",
           "deadline": "2025-11-30T00:00:00.000Z",
-          "completed": false,
+          "completed": true,
           "status": "not_started",
           "amount": 158000,
           "id": "1764405375106-txyupjnk6"
@@ -252,17 +332,65 @@
         {
           "title": "お見積もり",
           "deadline": null,
-          "completed": false,
+          "completed": true,
           "status": "not_started",
           "amount": 0,
           "id": "1764405380546-4nt6bybvb"
+        },
+        {
+          "title": "点灯式の実装 ( ボタンでON/OFF )",
+          "deadline": null,
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1764664792681-s5fdh4wbb"
+        },
+        {
+          "title": "BGM切り替え実装",
+          "deadline": null,
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1764664131098-lrpuln4ro"
+        },
+        {
+          "title": "昼夜の切り替え (ライト・Skybox)",
+          "deadline": null,
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1764664757279-vpdj1za78"
+        },
+        {
+          "title": "バイク実装",
+          "deadline": null,
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1764664774081-igq58rx8p"
+        },
+        {
+          "title": "Clusterアップロード",
+          "deadline": null,
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1764664784356-tic9zt06d"
+        },
+        {
+          "title": "日程のご返信",
+          "deadline": null,
+          "completed": false,
+          "status": "not_started",
+          "amount": 0,
+          "id": "1765485802650-yuu7ei5cs"
         }
       ],
       "proposals": [],
       "notes": "",
       "id": "1764405347930-r26pvsxy0",
       "createdAt": "2025-11-29T08:35:47.930Z",
-      "updatedAt": "2025-11-29T09:24:35.857Z"
+      "updatedAt": "2025-12-11T20:43:28.836Z"
     },
     {
       "name": "Unity / UI改善",
@@ -271,7 +399,7 @@
       "type": "development",
       "amount": 0,
       "deadline": null,
-      "status": "free_estimate",
+      "status": "completed",
       "tasks": [
         {
           "title": "納品",
@@ -286,47 +414,7 @@
       "notes": "",
       "id": "1764405420484-bb0g9rje6",
       "createdAt": "2025-11-29T08:37:00.484Z",
-      "updatedAt": "2025-11-29T08:37:39.786Z"
-    },
-    {
-      "name": "VR / 水質シミュレーション",
-      "client": "",
-      "platform": "direct",
-      "type": "development",
-      "amount": 0,
-      "deadline": null,
-      "status": "free_estimate",
-      "tasks": [
-        {
-          "title": "調整",
-          "deadline": null,
-          "completed": false,
-          "status": "in_progress",
-          "amount": 0,
-          "id": "1764405594256-0o6m9hqol"
-        },
-        {
-          "title": "仮納品",
-          "deadline": null,
-          "completed": false,
-          "status": "not_started",
-          "amount": 0,
-          "id": "1764405600574-zsjy6wvrn"
-        },
-        {
-          "title": "納品",
-          "deadline": "2025-12-31T00:00:00.000Z",
-          "completed": false,
-          "status": "not_started",
-          "amount": 165000,
-          "id": "1764405604252-z6e3x61u1"
-        }
-      ],
-      "proposals": [],
-      "notes": "",
-      "id": "1764405591305-lua4qr2ff",
-      "createdAt": "2025-11-29T08:39:51.305Z",
-      "updatedAt": "2025-11-29T09:25:18.510Z"
+      "updatedAt": "2025-12-02T07:18:16.939Z"
     },
     {
       "name": "Web / クイズゲーム",
@@ -335,7 +423,7 @@
       "type": "development",
       "amount": 0,
       "deadline": null,
-      "status": "free_estimate",
+      "status": "pending",
       "tasks": [
         {
           "title": "着金",
@@ -364,34 +452,42 @@
         {
           "title": "クイズ画像の差し替え",
           "deadline": null,
-          "completed": false,
-          "status": "not_started",
+          "completed": true,
+          "status": "completed",
           "amount": 0,
           "id": "1764408668886-ty3p51miy"
+        },
+        {
+          "title": "引き算の修正",
+          "deadline": null,
+          "completed": true,
+          "status": "completed",
+          "amount": 0,
+          "id": "1764926316141-xumy79bzy"
+        },
+        {
+          "title": "「か」行の実装",
+          "deadline": null,
+          "completed": false,
+          "status": "in_progress",
+          "amount": 0,
+          "id": "1764408692969-1d64po4p6"
         },
         {
           "title": "ドラック&ドロップの当たり判定",
           "deadline": null,
           "completed": false,
-          "status": "not_started",
+          "status": "in_progress",
           "amount": 0,
           "id": "1764408679305-xn2e8x736"
-        },
-        {
-          "title": "「隠れているのは」の完成",
-          "deadline": null,
-          "completed": false,
-          "status": "not_started",
-          "amount": 0,
-          "id": "1764408692969-1d64po4p6"
         }
       ],
       "proposals": [],
       "notes": "",
       "id": "1764408363563-jrhm5yy92",
       "createdAt": "2025-11-29T09:26:03.563Z",
-      "updatedAt": "2025-11-29T09:31:45.645Z"
+      "updatedAt": "2025-12-05T09:22:43.693Z"
     }
   ],
-  "lastUpdated": "2025-11-29T09:31:45.650Z"
+  "lastUpdated": "2025-12-12T06:11:04.956Z"
 }

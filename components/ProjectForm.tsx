@@ -29,7 +29,7 @@ export function ProjectForm({ onClose, onSubmit, initialData }: ProjectFormProps
     type: initialData?.type || 'development',
     amount: initialData?.amount || 0,
     deadline: initialData?.deadline || null,
-    status: initialData?.status || 'free_estimate',
+    status: initialData?.status || 'estimate',
     notes: initialData?.notes || '',
   });
 

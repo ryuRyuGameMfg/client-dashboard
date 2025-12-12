@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Project, Task, Proposal } from '@/types';
+import { Project, Task, Proposal, ProjectStatus } from '@/types';
 import { loadDataFromStorage, saveDataToStorage } from '@/lib/storage';
 
 interface ProjectStore {
@@ -7,6 +7,8 @@ interface ProjectStore {
   selectedProjectId: string | null;
   viewMode: 'card' | 'table';
   filter: 'all' | 'today' | 'thisWeek' | 'thisMonth' | 'overdue' | 'upcoming';
+  statusFilter: ProjectStatus[];
+  hideCompletedTasks: boolean;
   
   // 初期化
   initialize: () => void;
@@ -34,6 +36,9 @@ interface ProjectStore {
   setSelectedProject: (id: string | null) => void;
   setViewMode: (mode: 'card' | 'table') => void;
   setFilter: (filter: 'all' | 'today' | 'thisWeek' | 'thisMonth' | 'overdue' | 'upcoming') => void;
+  setStatusFilter: (statuses: ProjectStatus[]) => void;
+  toggleStatusFilter: (status: ProjectStatus) => void;
+  setHideCompletedTasks: (hide: boolean) => void;
   
   // データの保存
   save: () => void;
@@ -49,6 +54,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   selectedProjectId: null,
   viewMode: 'table',
   filter: 'all',
+  statusFilter: ['estimate', 'in_progress'], // デフォルトで「見積もり」と「取引中」のみ表示
+  hideCompletedTasks: false,
 
   initialize: async () => {
     const projects = await loadDataFromStorage();
@@ -176,14 +183,48 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   },
 
   toggleTask: (projectId, taskId) => {
-    const state = get();
-    const project = state.projects.find((p) => p.id === projectId);
-    if (!project) return;
+    set((state) => {
+      const project = state.projects.find((p) => p.id === projectId);
+      if (!project) return state;
 
-    const task = project.tasks.find((t) => t.id === taskId);
-    if (!task) return;
+      const taskIndex = project.tasks.findIndex((t) => t.id === taskId);
+      if (taskIndex === -1) return state;
 
-    get().updateTask(projectId, taskId, { completed: !task.completed });
+      const task = project.tasks[taskIndex];
+      const newCompleted = !task.completed;
+
+      // 新しいタスク配列を作成
+      const newTasks = project.tasks.map((t, index) => {
+        if (t.id === taskId) {
+          // チェックを入れた場合: 完了ステータスに
+          // チェックを外した場合: 進行中ステータスに
+          return {
+            ...t,
+            completed: newCompleted,
+            status: newCompleted ? 'completed' as const : 'in_progress' as const,
+          };
+        }
+        
+        // チェックを入れた場合、次の未完了タスクを進行中に
+        if (newCompleted && index === taskIndex + 1 && !t.completed && t.status !== 'in_progress') {
+          return {
+            ...t,
+            status: 'in_progress' as const,
+          };
+        }
+        
+        return t;
+      });
+
+      const newProjects = state.projects.map((p) =>
+        p.id === projectId
+          ? { ...p, tasks: newTasks, updatedAt: new Date() }
+          : p
+      );
+
+      saveDataToStorage(newProjects).catch(console.error);
+      return { projects: newProjects };
+    });
   },
 
   reorderTasks: (projectId, activeId, overId) => {
@@ -279,6 +320,27 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
 
   setFilter: (filter: 'all' | 'today' | 'thisWeek' | 'thisMonth' | 'overdue' | 'upcoming') => {
     set({ filter });
+  },
+
+  setStatusFilter: (statuses: ProjectStatus[]) => {
+    set({ statusFilter: statuses });
+  },
+
+  toggleStatusFilter: (status: ProjectStatus) => {
+    set((state) => {
+      const currentFilters = state.statusFilter;
+      if (currentFilters.includes(status)) {
+        // 既に選択されている場合は削除
+        return { statusFilter: currentFilters.filter((s) => s !== status) };
+      } else {
+        // 選択されていない場合は追加
+        return { statusFilter: [...currentFilters, status] };
+      }
+    });
+  },
+
+  setHideCompletedTasks: (hide: boolean) => {
+    set({ hideCompletedTasks: hide });
   },
 
   save: () => {

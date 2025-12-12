@@ -51,10 +51,12 @@ export function filterProjects(projects: Project[], filter: FilterType): Project
   }
 }
 
-// ステータス別フィルタリング
-export function filterByStatus(projects: Project[], status: ProjectStatus | 'all'): Project[] {
-  if (status === 'all') return projects;
-  return projects.filter((p) => p.status === status);
+// ステータス別フィルタリング（複数選択対応）
+export function filterByStatus(projects: Project[], statuses: ProjectStatus[]): Project[] {
+  // 空の配列の場合はすべて表示
+  if (statuses.length === 0) return projects;
+  // 選択されたステータスのいずれかに一致するものを表示
+  return projects.filter((p) => statuses.includes(p.status));
 }
 
 // 売上計算（タスクベース、手数料を考慮）
@@ -89,7 +91,7 @@ export function calculateRevenue(projects: Project[]): {
         confirmed += netAmount;
       } else if (project.status === 'in_progress') {
         inProgress += netAmount;
-      } else if (project.status === 'free_estimate' || project.status === 'paid_estimate') {
+      } else if (project.status === 'estimate') {
         estimated += netAmount;
       }
       

@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "案件ダッシュボード",
   description: "エンジニア向け案件管理アプリ",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

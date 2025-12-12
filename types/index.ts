@@ -14,8 +14,7 @@ export type ProjectType =
 
 // ステータス
 export type ProjectStatus = 
-  | 'free_estimate'    // 無料見積もり
-  | 'paid_estimate'    // 有料見積もり
+  | 'estimate'         // 見積もり
   | 'in_progress'      // 取引中
   | 'completed'        // 取引完了
   | 'pending';         // 保留中
@@ -71,8 +70,7 @@ export interface DataFile {
 
 // ステータスの表示名
 export const STATUS_LABELS: Record<ProjectStatus, string> = {
-  free_estimate: '無料見積もり',
-  paid_estimate: '有料見積もり',
+  estimate: '見積もり',
   in_progress: '取引中',
   completed: '取引完了',
   pending: '保留中',
@@ -96,8 +94,7 @@ export const TYPE_LABELS: Record<ProjectType, string> = {
 
 // ステータスの色
 export const STATUS_COLORS: Record<ProjectStatus, string> = {
-  free_estimate: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-  paid_estimate: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+  estimate: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
   in_progress: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
   completed: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
   pending: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200',

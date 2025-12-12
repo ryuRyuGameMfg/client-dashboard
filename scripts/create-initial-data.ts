@@ -61,7 +61,7 @@ const initialProjects: Project[] = [
     type: 'teaching',
     amount: 0,
     deadline: null,
-    status: 'free_estimate',
+    status: 'estimate',
     tasks: [],
     proposals: [],
     notes: '',
@@ -70,7 +70,7 @@ const initialProjects: Project[] = [
   },
 ];
 
-const dataFile: DataFile = {
+const dataFile = {
   projects: initialProjects.map(p => ({
     ...p,
     deadline: p.deadline ? p.deadline.toISOString() : null,

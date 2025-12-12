@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 4001",
     "build": "next build",
-    "start": "next start -p 3001",
+    "start": "next start -p 4001",
+    "pm2:start": "pm2 start npm --name 'client-dashboard' -- start",
+    "pm2:stop": "pm2 stop client-dashboard",
+    "pm2:restart": "pm2 restart client-dashboard",
+    "pm2:delete": "pm2 delete client-dashboard",
+    "pm2:logs": "pm2 logs client-dashboard",
+    "pm2:status": "pm2 status",
     "lint": "eslint"
   },
   "dependencies": {
